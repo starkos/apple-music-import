@@ -11,22 +11,14 @@ namespace AppleImport
 		MainWindowController _mainWindowController;
 
 
-		public AppDelegate()
-		{
-			Console.WriteLine("[AppDelegate.ctor]");
-		}
-
-
 		public override void DidFinishLaunching(NSNotification notification)
 		{
-			Console.WriteLine("[AppDelegate.DidFinishLaunching]");
 			_mainWindowController = new MainWindowController();
+
+			var uri = NSBundle.MainBundle.GetUrlForResource("index", "html");
+			_mainWindowController.LoadUri(uri);
+
 			_mainWindowController.ShowWindow(this);
-		}
-
-
-		public override void WillTerminate(NSNotification notification)
-		{
 		}
 	}
 }
